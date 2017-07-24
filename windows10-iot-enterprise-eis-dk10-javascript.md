@@ -65,7 +65,7 @@ The EIS-DK10 starter kit includes:
 
 Step 1: Connector sensor with cable
 
-![image01](media/Connector-sensor-with-cable.JPG
+![image01](media/Connector-sensor-with-cable.JPG)
 
 Step 2: Connect WISE-4012 to Devices
 
