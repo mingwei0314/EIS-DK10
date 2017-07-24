@@ -14,8 +14,7 @@ Run a simple nodejs sample on eis-dk10 device running Windows 10 IoT Enterprise
 -   [Step 1: Prerequisites](#Prerequisites)
 -   [Step 2: Prepare your Device](#PrepareDevice)
 -   [Step 3: Build and Run the Sample](#Build)
-    -   [Option 1: Use the development board, without sensors](#Device-Sample)
-    -   [Option 2: Use the Machinery Predictive Diagnostic Maintenance System kit from NEXCOM](#Kit01-Sample)
+    -   [Use the EIS-DK10 starter kit from Advantech](#Kit01-Sample)
 -   [Next Steps](#NextSteps)
 
 <a name="Introduction"></a>
@@ -23,7 +22,7 @@ Run a simple nodejs sample on eis-dk10 device running Windows 10 IoT Enterprise
 
 **About this document**
 
-This document describes how to connect CPS-200 device running Windows 10 IoT Core with Azure IoT SDK. This multi-step process includes:
+This document describes how to connect EIS-DK10 device running Windows 10 IoT Enterprise with Azure IoT SDK. This multi-step process includes:
 -   Configuring Azure IoT Hub
 -   Registering your IoT device
 -   Build and deploy Azure IoT SDK on device
@@ -34,21 +33,18 @@ This document describes how to connect CPS-200 device running Windows 10 IoT Cor
 You should have the following items ready before beginning the process:
 
 -   Computer with Git client installed and access to the
-    [azure-iot-sdk-csharp](https://github.com/Azure/azure-iot-sdk-csharp) GitHub public repository.
+    [azure-iot-sdk-node](https://github.com/Azure/azure-sdk-for-node) GitHub public repository.
 -   [Setup your IoT hub][lnk-setup-iot-hub]
 -   [Provision your device and get its credentials][lnk-manage-iot-hub]
--   CPS-200 device.
-
-#### Install Visual Studio 2015 and Tools
-
--   To create Windows IoT Core solutions, you will need to install [Visual Studio 2015](https://www.visualstudio.com/en-us/products/vs-2015-product-editions.aspx). You can install any edition of Visual Studio, including the free Community edition.
-
-    Make sure to select the **Universal Windows App Development Tools**, the component required for writing apps Windows 10:
+-   EIS-DK10 device.
 
 <a name="PrepareDevice"></a>
 # Step 2: Prepare your Device
 
--   Nothing to do here.
+-   Install Nodejs
+-   Install Node-RED
+-   Install node-red-contrib-azureiothubnode
+-   Install node-red-contrib-modbus
 
 <a name="Build"></a>
 # Step 3: Build and Run the Sample
@@ -56,115 +52,36 @@ You should have the following items ready before beginning the process:
 <a name="Step_3_1_Connect"></a>
 ## 3.1 Connect the Device
 
--   Connect the board to your network using an Ethernet cable. This step is required, as the sample depends on internet access.
-
--   Plug the device into your computer using a micro-USB cable.
-
 <a name="Step_3_2_Build"></a>
 ## 3.2  Build the Samples
 
-<a name="Device-Sample"></a>
-## Option 1: Use the development board, without sensors
-
--   Start a new instance of Visual Studio 2015. Open the **iothub_csharp_client.sln** solution (/azure-iot-sdk-csharp) from your local copy of the repository.
-
--   In Visual Studio, from **Solution Explorer**, navigate to the **UWPSample(Universal Windows)** project.
-
--   Locate the following code in the **ConnectionStrings.cs** file:
-
-        public const string DeviceConnectionString = "<replace>";
-
--   Replace the above placeholder with device connection string you obtained in [Step 1](#Prerequisites) and save the changes.
-
--   Choose the right architecture (x86 or ARM, depending on your device) and set the debugging method to "Remote Machine":
-    
--   To deploy the binaries on your device, right-click on the UWPSample project in the **Solution Explorer**, select **Properties** and navigate to the **Debug** tab:
-
-    Type in the name of your device. Make sure the "Use authentication" box is unchecked.
-
--   Build the solution.
-
-<a name="Step_3_3_Run"></a>
-## 3.3 Run and Validate the Samples
-
-### 3.3.1 Send Device Events to IoT Hub
-
--   In Visual Studio, from **Solution Explorer**, right-click the **UWPSample(Universal Windows)** project, click **Debug &minus;&gt; Start new instance** to build and run the sample. 
-
--   See [Manage IoT Hub][lnk-manage-iot-hub] to learn how to observe the messages IoT Hub receives from the application.
-
-### 3.3.2 Receive messages from IoT Hub
-
--   See [Manage IoT Hub][lnk-manage-iot-hub] to learn how to send cloud-to-device messages to the application.
-
 <a name="Kit01-Sample"></a>
-## Option 2: Use the Machinery Predictive Diagnostic Maintenance System kit from NEXCOM
+## Use the EIS-DK10 starter kit from Advantech
 
-### Machinery Predictive Diagnostic Maintenance System kit
+### EIS-DK10 starter kit
 
-The Machinery Predictive Diagnostic Maintenance System kit includes:
+The EIS-DK10 starter kit includes:
 
--   NEXCOM CPS 200 device + *Rockwell PLC/ Dector, XM Module*
+-   Advantech EIS-DK10 device
 
--   Rotor kit
-
--   Inverter with Modbus/TCP Gateway
-
-> [*http://www.nexcom.com/Products/industrial-computing-solutions/iot-solutions/iot-gateway/rotor-w-iot-gateway-iot-gateway*](http://www.nexcom.com/Products/industrial-computing-solutions/iot-solutions/iot-gateway/rotor-w-iot-gateway-iot-gateway)
->
-> ![image01](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image1.jpeg)
+> [*http://www.advantech.com/products/071c0784-5e9b-4bb8-bb07-2cb06da757a1/eis-dk10/mod_83b56167-5f19-4967-9d0a-cc3c67cecb36*](http://www.advantech.com/products/071c0784-5e9b-4bb8-bb07-2cb06da757a1/eis-dk10/mod_83b56167-5f19-4967-9d0a-cc3c67cecb36)
 
 ### Connect the sensors
 
-There are three parts: Main Set, Rotor kit and Inverter. Follow the
-picture below to connect CH1 to CH1, CH2 to CH2 and Accelerometer to
-Tachometer.
-
-![image02](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image2.jpeg)
-
-![image03](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image3.jpeg)
-
 **Build and Run the sample**
 
-GitHub source code
+Use Node-RED import flow (Send data to IoT Hub)
 
-[*https://github.com/allanchen1971/IOTHubSample01*](https://github.com/allanchen1971/IOTHubSample01)
-
-Run the application and click the “Connect” button to get the Modbus
-data.
 
 **Send Device Events to IoT Hub**
 
 Then start send to IoT Hub.
 
-We sent the Temperature/Humidity/MotoSpeed/DI/Input and control
-Lamp/Fan/MotoSpeed to IoT Hub
+We sent the Temperature/Humidity/LEO0/FAN to IoT Hub
 
-![image04](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image4.jpeg)
 
 **Receive messages from IoT Hub**
 
-We receive the Temperature/Humidity/MotoSpeed/DI/Input and control
-command: Lamp/Fan/MotoSpeed from IoT Hub
-
-On the remote side, we send command (list below) from IotHub to device,
-
-Speed: (0-100)/lamp:on/lamp:off/fan:on/fan:off
-
-After device(Gateway) got the command, it will control the device to set
-Fan On/Off and Lamp On/Off and control the motor speed.
-
-Lamp On:
-
-![image05](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image5.png)
-
-Fan On:
-
-![image06](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image6.png)
-
-Speed:
-
-![image07](media/nexcom-machinery-predictive-diagnostic-maintenance-system-kit/image7.png)
 
 <a name="NextSteps"></a>
 # Next Steps
