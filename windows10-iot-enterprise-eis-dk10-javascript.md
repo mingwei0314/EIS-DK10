@@ -14,7 +14,7 @@ Run a simple nodejs sample on eis-dk10 device running Windows 10 IoT Enterprise
 -   [Step 1: Prerequisites](#Prerequisites)
 -   [Step 2: Prepare your Device](#PrepareDevice)
 -   [Step 3: Build and Run the Sample](#Build)
-    -   [Use the EIS-DK10 starter kit from Advantech](#Kit01-Sample)
+    -   [Use the EIS-DK10 starter kit from Advantech](#Build)
 -   [Next Steps](#NextSteps)
 
 <a name="Introduction"></a>
@@ -47,26 +47,38 @@ You should have the following items ready before beginning the process:
 -   Install node-red-contrib-modbus
 
 <a name="Build"></a>
-# Step 3: Build and Run the Sample
-
-<a name="Step_3_1_Connect"></a>
-## 3.1 Connect the Device
-
-<a name="Step_3_2_Build"></a>
-## 3.2  Build the Samples
-
-<a name="Kit01-Sample"></a>
 ## Use the EIS-DK10 starter kit from Advantech
 
 ### EIS-DK10 starter kit
 
 The EIS-DK10 starter kit includes:
 
--   Advantech EIS-DK10 device
+-   ARK-1123H
+-   Temperature/Humidity Sensor
+-   LED Indicator
+-   Cooling Fan
+-   Wireless I/O Module
 
 > [*http://www.advantech.com/products/071c0784-5e9b-4bb8-bb07-2cb06da757a1/eis-dk10/mod_83b56167-5f19-4967-9d0a-cc3c67cecb36*](http://www.advantech.com/products/071c0784-5e9b-4bb8-bb07-2cb06da757a1/eis-dk10/mod_83b56167-5f19-4967-9d0a-cc3c67cecb36)
 
 ### Connect the sensors
+
+Step 1: Connector sensor with cable
+![image01](media/Connector-sensor-with-cable.JPG
+
+Step 2: Connect WISE-4012 to Devices
+![image02](media/Connect-WISE-4012-to-Devices1.JPG)
+![image03](media/Connect-WISE-4012-to-Devices2.JPG)
+![image04](media/Connect-WISE-4012-to-Devices3.JPG)
+
+Step 3: Connect Power Converter Cable
+![image05](media/Connector-sensor-with-cable.JPG)
+
+Step 4: Connect Power Cable with Adaptor and System
+![image06](media/Connect-Power-Cable-with-Adaptor-and-System.JPG)
+
+Step 5: Done Assemble
+![image07](media/Done-Assemble.JPG)
 
 **Build and Run the sample**
 
@@ -81,7 +93,6 @@ We sent the Temperature/Humidity/LEO0/FAN to IoT Hub
 
 
 **Receive messages from IoT Hub**
-
 
 <a name="NextSteps"></a>
 # Next Steps
